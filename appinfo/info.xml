@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<info>
+	<id>upscaler_demo</id>
+	<name>Upscaler Demo</name>
+	<summary>Nextcloud Upscaler Demo</summary>
+	<description>
+	<![CDATA[A little bit complex example of the Nextcloud application written in python]]>
+	</description>
+	<version>1.0.0</version>
+	<licence>agpl</licence>
+	<author mail="andrey18106x@gmail.com" homepage="https://github.com/andrey18106">Andrey Borysenko</author>
+	<author mail="bigcat88@icloud.com" homepage="https://github.com/bigcat88">Alexander Piskun</author>
+	<namespace>upscaler_demo</namespace>
+	<documentation>
+		<developer>https://github.com/cloud-py-api/upscaler_demo</developer>
+	</documentation>
+	<category>tools</category>
+	<website>https://github.com/cloud-py-api/upscaler_demo</website>
+	<bugs>https://github.com/cloud-py-api/upscaler_demo/issues</bugs>
+	<repository type="git">https://github.com/cloud-py-api/upscaler_demo</repository>
+	<dependencies>
+		<nextcloud min-version="27" max-version="28"/>
+	</dependencies>
+	<ex-app>
+		<docker-install>
+			<registry>ghcr.io</registry>
+			<image>cloud-py-api/upscaler_demo</image>
+			<image-tag>latest</image-tag>
+		</docker-install>
+		<protocol>http</protocol>
+		<system>0</system>
+	</ex-app>
+</info>
