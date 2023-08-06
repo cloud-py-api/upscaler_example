@@ -1,2 +1,1 @@
-# upscaler_demo
-demo
+# PyAppV2-ImageUpScaler
