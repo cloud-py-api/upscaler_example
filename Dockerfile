@@ -8,7 +8,7 @@ RUN \
   python3 -m pip install /app/gfpgan_src/. && rm -rf ~/.cache
 
 RUN \
-  python3 -m pip install "nc-py-api[app]"
+  python3 -m pip install "nc-py-api[app]>=0.0.31"
 
 WORKDIR /app
 ENTRYPOINT ["python3", "main.py"]
