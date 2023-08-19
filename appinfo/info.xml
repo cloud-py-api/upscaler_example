@@ -27,6 +27,14 @@
 			<image>cloud-py-api/upscaler_demo</image>
 			<image-tag>latest</image-tag>
 		</docker-install>
+		<scopes>
+			<required>
+				<value>10</value>
+			</required>
+			<optional>
+				<value>32</value>
+			</optional>
+		</scopes>
 		<protocol>http</protocol>
 		<system>0</system>
 	</ex-app>
