@@ -43,5 +43,5 @@ run27:
 .PHONY: manual_register
 manual_register:
 	docker exec master-nextcloud-1 sudo -u www-data php occ app_ecosystem_v2:app:register upscaler_demo manual_install --json-info \
-  "{\"appid\":\"upscaler_demo\",\"name\":\"upscaler_demo\",\"daemon_config_name\":\"manual_install\",\"version\":\"1.0.0\",\"secret\":\"12345\",\"host\":\"host.docker.internal\",\"port\":9050,\"scopes\":{\"required\":[10],\"optional\":[32]},\"protocol\":\"http\",\"system_app\":0}" \
+  "{\"appid\":\"upscaler_demo\",\"name\":\"upscaler_demo\",\"daemon_config_name\":\"manual_install\",\"version\":\"1.0.0\",\"secret\":\"12345\",\"host\":\"host.docker.internal\",\"port\":9050,\"scopes\":{\"required\":[\"FILES\"],\"optional\":[\"NOTIFICATIONS\"]},\"protocol\":\"http\",\"system_app\":0}" \
   -e --force-scopes
