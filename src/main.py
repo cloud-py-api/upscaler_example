@@ -37,11 +37,11 @@ def gfpgan_background(input_file: FsNode, nc: NextcloudApp, upscale: int):
         buf = upscale_image(buf, upscale=upscale)
         nc.files.upload_stream(output_file, buf)
         if nc.scope_allowed(ApiScope.NOTIFICATIONS):
-            nc.users.notifications.create(subj, f"{output_file} is ready.")
+            nc.notifications.create(subj, f"{output_file} is ready.")
     except Exception as e:
         nc.log(LogLvl.ERROR, str(e))
         if nc.scope_allowed(ApiScope.NOTIFICATIONS):
-            nc.users.notifications.create("Error occurred", "Error information was written to log file")
+            nc.notifications.create("Error occurred", "Error information was written to log file")
     return Response()
 
 
