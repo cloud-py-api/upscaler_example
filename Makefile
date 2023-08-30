@@ -40,7 +40,7 @@ run28:
 .PHONY: run27
 run27:
 	docker exec master-stable27-1 sudo -u www-data php occ app_ecosystem_v2:app:unregister upscaler_demo --silent || true
-	docker exec master-nextcloud-1 sudo -u www-data php occ app_ecosystem_v2:app:register upscaler_demo docker_dev \
+	docker exec master-stable27-1 sudo -u www-data php occ app_ecosystem_v2:app:register upscaler_demo docker_dev \
 		-e --force-scopes \
 		--info-xml https://raw.githubusercontent.com/cloud-py-api/upscaler_demo/main/appinfo/info.xml
 
