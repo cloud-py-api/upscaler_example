@@ -1,41 +1,46 @@
 <?xml version="1.0"?>
 <info>
-	<id>upscaler_demo</id>
-	<name>Upscaler Demo</name>
-	<summary>Nextcloud Upscaler Demo</summary>
+	<id>upscaler_example</id>
+	<name>Image Upscaler Example</name>
+	<summary>Nextcloud Image Upscaler Example</summary>
 	<description>
-	<![CDATA[A little bit complex example of the Nextcloud application written in python]]>
-	</description>
+	<![CDATA[
+**Demonstration of using [`AppAPI`](https://github.com/cloud-py-api/app_api) and File Actions.**
+
+This application is an example, but the model used in it is quite large, and it is recommended to use a GPU.
+
+It shouldn't be difficult to use an even more advanced model based on this example and release a full application.
+
+Refer to [How to install](https://github.com/cloud-py-api/upscaler_example/blob/main/HOW_TO_INSTALL.md) to try it.
+	]]></description>
 	<version>1.0.0</version>
 	<licence>agpl</licence>
 	<author mail="andrey18106x@gmail.com" homepage="https://github.com/andrey18106">Andrey Borysenko</author>
 	<author mail="bigcat88@icloud.com" homepage="https://github.com/bigcat88">Alexander Piskun</author>
-	<namespace>upscaler_demo</namespace>
-	<documentation>
-		<developer>https://github.com/cloud-py-api/upscaler_demo</developer>
-	</documentation>
+	<namespace>ImageUpscalerExample</namespace>
+	<screenshot>https://raw.githubusercontent.com/cloud-py-api/upscaler_example/main/screenshots/upscaling.png</screenshot>
 	<category>tools</category>
-	<website>https://github.com/cloud-py-api/upscaler_demo</website>
-	<bugs>https://github.com/cloud-py-api/upscaler_demo/issues</bugs>
-	<repository type="git">https://github.com/cloud-py-api/upscaler_demo</repository>
+	<website>https://github.com/cloud-py-api/upscaler_example</website>
+	<bugs>https://github.com/cloud-py-api/upscaler_example/issues</bugs>
+	<repository type="git">https://github.com/cloud-py-api/upscaler_example.git</repository>
 	<dependencies>
 		<nextcloud min-version="27" max-version="28"/>
 	</dependencies>
 	<ex-app>
 		<docker-install>
 			<registry>ghcr.io</registry>
-			<image>cloud-py-api/upscaler_demo</image>
-			<image-tag>latest</image-tag>
+			<image>cloud-py-api/upscaler_example</image>
+			<image-tag>1.0.0</image-tag>
 		</docker-install>
 		<scopes>
 			<required>
 				<value>FILES</value>
+				<value>NOTIFICATIONS</value>
 			</required>
 			<optional>
-				<value>NOTIFICATIONS</value>
 			</optional>
 		</scopes>
 		<protocol>http</protocol>
-		<system>0</system>
+		<system>false</system>
 	</ex-app>
 </info>
