@@ -10,24 +10,11 @@ from torch.cuda import is_available as cudaIsAvailable
 from torch.backends.mps import is_available as mpsIsAvailable
 
 
-def upscale_image(image_data: BytesIO, version: str = "1.4", upscale: int = 1):
-    if version == '1.3':
-        arch = 'clean'
-        channel_multiplier = 2
-        model_name = 'GFPGANv1.3'
-        url = 'https://github.com/TencentARC/GFPGAN/releases/download/v1.3.0/GFPGANv1.3.pth'
-    elif version == '1.4':
-        arch = 'clean'
-        channel_multiplier = 2
-        model_name = 'GFPGANv1.4'
-        url = 'https://github.com/TencentARC/GFPGAN/releases/download/v1.3.0/GFPGANv1.4.pth'
-    elif version == 'RestoreFormer':
-        arch = 'RestoreFormer'
-        channel_multiplier = 2
-        model_name = 'RestoreFormer'
-        url = 'https://github.com/TencentARC/GFPGAN/releases/download/v1.3.4/RestoreFormer.pth'
-    else:
-        raise ValueError(f'Wrong model version {version}.')
+def upscale_image(image_data: BytesIO, upscale: int = 2):
+    arch = 'clean'
+    channel_multiplier = 2
+    model_name = 'GFPGANv1.4'
+    url = 'https://github.com/TencentARC/GFPGAN/releases/download/v1.3.0/GFPGANv1.4.pth'
 
     # determine model paths
     model_path = os.path.join('experiments/pretrained_models', model_name + '.pth')

@@ -1,14 +1,14 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="upscaler_demo" type="PythonConfigurationType" factoryName="Python">
+  <configuration default="false" name="upscaler_example" type="PythonConfigurationType" factoryName="Python">
     <module name="upscaler_demo" />
     <option name="INTERPRETER_OPTIONS" value="" />
     <option name="PARENT_ENVS" value="true" />
     <envs>
-      <env name="APP_ID" value="upscaler_demo" />
-      <env name="APP_PORT" value="9050" />
+      <env name="APP_ID" value="upscaler_example" />
+      <env name="APP_PORT" value="10050" />
       <env name="APP_SECRET" value="12345" />
       <env name="APP_VERSION" value="1.0.0" />
-      <env name="NEXTCLOUD_URL" value="http://nextcloud.local/index.php" />
+      <env name="NEXTCLOUD_URL" value="http://nextcloud.local/" />
       <env name="PYTHONUNBUFFERED" value="1" />
     </envs>
     <option name="SDK_HOME" value="$PROJECT_DIR$/venv/bin/python" />
