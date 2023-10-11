@@ -186,8 +186,9 @@ def enabled_handler(enabled: bool, request: Request):
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED)
     print(f"enabled={enabled}")
     try:
+        r = ""
         if enabled:
-            ocs_call(
+            result = ocs_call(
                 "POST",
                 "/ocs/v1.php/apps/app_api/api/v1/files/actions/menu",
                 json_data={
@@ -200,15 +201,19 @@ def enabled_handler(enabled: bool, request: Request):
                     }
                 },
             )
+            response_data = json.loads(result.text)
+            ocs_meta = response_data["ocs"]["meta"]
+            if ocs_meta["status"] != "ok":
+                r = f"error: {ocs_meta['message']}"
         else:
             ocs_call(
                 "DELETE",
                 "/ocs/v1.php/apps/app_api/api/v1/files/actions/menu",
                 json_data={"fileActionMenuName": "upscale"},
             )
-        r = ""
     except Exception as e:
         r = str(e)
+    print(f"enabled={enabled} -> {r}")
     return responses.JSONResponse(content={"error": r}, status_code=200)
 
 
