@@ -162,11 +162,10 @@ def gfpgan_background(input_file: UiActionFileInfo, user_id: str):
     except Exception as e:
         nc_log(3, "ExApp exception:" + str(e))
         create_notification(user_id, "Error occurred", "Error information was written to log file")
-    return Response()
 
 
 @APP.post("/gfpgan_upscale")
-async def gfpgan_restore(
+async def gfpgan_upscale(
         file: UiFileActionHandlerInfo,
         request: Request,
         background_tasks: BackgroundTasks,
