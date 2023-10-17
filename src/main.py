@@ -223,6 +223,12 @@ def heartbeat_handler():
     return responses.JSONResponse(content={"status": "ok"}, status_code=200)
 
 
+@APP.post("/init")
+def init_callback():
+    ocs_call(method="PUT", path=f"/index.php/apps/app_api/apps/status/{os.environ['APP_ID']}", json={"progress": 100})
+    return responses.JSONResponse(content={}, status_code=200)
+
+
 if __name__ == "__main__":
     uvicorn.run(
         "main:APP", host=os.environ.get("APP_HOST", "127.0.0.1"), port=int(os.environ["APP_PORT"]), log_level="trace"
