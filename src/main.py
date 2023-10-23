@@ -225,7 +225,7 @@ def heartbeat_handler():
 
 @APP.post("/init")
 def init_callback():
-    ocs_call(method="PUT", path=f"/index.php/apps/app_api/apps/status/{os.environ['APP_ID']}", json={"progress": 100})
+    ocs_call(method="PUT", path=f"/index.php/apps/app_api/apps/status/{os.environ['APP_ID']}", json_data={"progress": 100})
     return responses.JSONResponse(content={}, status_code=200)
 
 
