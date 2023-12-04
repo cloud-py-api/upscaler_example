@@ -35,12 +35,6 @@ class UiActionFileInfo(BaseModel):
     instanceId: typing.Optional[str]
 
 
-class UiFileActionHandlerInfo(BaseModel):
-    actionName: str
-    actionHandler: str
-    actionFile: UiActionFileInfo
-
-
 def random_string(size: int) -> str:
     return "".join(choice(ascii_lowercase + ascii_uppercase + digits) for _ in range(size))
 
@@ -166,7 +160,7 @@ def gfpgan_background(input_file: UiActionFileInfo, user_id: str):
 
 @APP.post("/gfpgan_upscale")
 async def gfpgan_upscale(
-        file: UiFileActionHandlerInfo,
+        file: UiActionFileInfo,
         request: Request,
         background_tasks: BackgroundTasks,
 ):
@@ -190,7 +184,7 @@ def enabled_handler(enabled: bool, request: Request):
         if enabled:
             result = ocs_call(
                 "POST",
-                "/ocs/v1.php/apps/app_api/api/v1/files/actions/menu",
+                "/ocs/v1.php/apps/app_api/api/v1/ui/files-actions-menu",
                 json_data={
                     "fileActionMenuParams": {
                         "name": "upscale",
@@ -208,7 +202,7 @@ def enabled_handler(enabled: bool, request: Request):
         else:
             ocs_call(
                 "DELETE",
-                "/ocs/v1.php/apps/app_api/api/v1/files/actions/menu",
+                "/ocs/v1.php/apps/app_api/api/v1/ui/files-actions-menu",
                 json_data={"fileActionMenuName": "upscale"},
             )
     except Exception as e:
