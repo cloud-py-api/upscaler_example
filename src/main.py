@@ -188,10 +188,10 @@ def enabled_handler(enabled: bool, request: Request):
                 json_data={
                     "fileActionMenuParams": {
                         "name": "upscale",
-                        "display_name": "Upscale",
+                        "displayName": "Upscale",
                         "mime": "image",
                         "permissions": 31,
-                        "action_handler": "/gfpgan_upscale",
+                        "actionHandler": "/gfpgan_upscale",
                     }
                 },
             )
@@ -203,7 +203,7 @@ def enabled_handler(enabled: bool, request: Request):
             ocs_call(
                 "DELETE",
                 "/ocs/v1.php/apps/app_api/api/v1/ui/files-actions-menu",
-                json_data={"fileActionMenuName": "upscale"},
+                json_data={"name": "upscale"},
             )
     except Exception as e:
         r = str(e)
