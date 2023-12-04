@@ -186,13 +186,11 @@ def enabled_handler(enabled: bool, request: Request):
                 "POST",
                 "/ocs/v1.php/apps/app_api/api/v1/ui/files-actions-menu",
                 json_data={
-                    "fileActionMenuParams": {
-                        "name": "upscale",
-                        "displayName": "Upscale",
-                        "mime": "image",
-                        "permissions": 31,
-                        "actionHandler": "/gfpgan_upscale",
-                    }
+                    "name": "upscale",
+                    "displayName": "Upscale",
+                    "mime": "image",
+                    "permissions": 31,
+                    "actionHandler": "/gfpgan_upscale",
                 },
             )
             response_data = json.loads(result.text)
