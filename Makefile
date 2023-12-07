@@ -26,23 +26,22 @@ build-push:
 	docker login ghcr.io
 	docker buildx build --push --platform linux/arm64/v8,linux/amd64 --tag ghcr.io/cloud-py-api/upscaler_example:1.3.0 --tag ghcr.io/cloud-py-api/upscaler_example:latest .
 
-.PHONY: deploy
-deploy:
-	docker exec master-nextcloud-1 sudo -u www-data php occ app_api:app:unregister upscaler_example --silent || true
-	docker exec master-nextcloud-1 sudo -u www-data php occ app_api:app:deploy upscaler_example docker_dev \
-		--info-xml https://raw.githubusercontent.com/cloud-py-api/upscaler_example/main/appinfo/info.xml
-
 .PHONY: deploy27
 deploy27:
 	docker exec master-stable27-1 sudo -u www-data php occ app_api:app:unregister upscaler_example --silent || true
 	docker exec master-stable27-1 sudo -u www-data php occ app_api:app:deploy upscaler_example docker_dev \
 		--info-xml https://raw.githubusercontent.com/cloud-py-api/upscaler_example/main/appinfo/info.xml
 
-.PHONY: run
-run:
+.PHONY: deploy28
+deploy28:
+	docker exec master-stable28-1 sudo -u www-data php occ app_api:app:unregister upscaler_example --silent || true
+	docker exec master-stable28-1 sudo -u www-data php occ app_api:app:deploy upscaler_example docker_dev \
+		--info-xml https://raw.githubusercontent.com/cloud-py-api/upscaler_example/main/appinfo/info.xml
+
+.PHONY: deploy
+deploy:
 	docker exec master-nextcloud-1 sudo -u www-data php occ app_api:app:unregister upscaler_example --silent || true
-	docker exec master-nextcloud-1 sudo -u www-data php occ app_api:app:register upscaler_example docker_dev \
-		--force-scopes \
+	docker exec master-nextcloud-1 sudo -u www-data php occ app_api:app:deploy upscaler_example docker_dev \
 		--info-xml https://raw.githubusercontent.com/cloud-py-api/upscaler_example/main/appinfo/info.xml
 
 .PHONY: run27
@@ -52,16 +51,37 @@ run27:
 		--force-scopes \
 		--info-xml https://raw.githubusercontent.com/cloud-py-api/upscaler_example/main/appinfo/info.xml
 
-.PHONY: register
-register:
+.PHONY: run28
+run28:
+	docker exec master-stable28-1 sudo -u www-data php occ app_api:app:unregister upscaler_example --silent || true
+	docker exec master-stable28-1 sudo -u www-data php occ app_api:app:register upscaler_example docker_dev \
+		--force-scopes \
+		--info-xml https://raw.githubusercontent.com/cloud-py-api/upscaler_example/main/appinfo/info.xml
+
+.PHONY: run
+run:
 	docker exec master-nextcloud-1 sudo -u www-data php occ app_api:app:unregister upscaler_example --silent || true
-	docker exec master-nextcloud-1 sudo -u www-data php occ app_api:app:register upscaler_example manual_install --json-info \
-  "{\"appid\":\"upscaler_example\",\"name\":\"upscaler_example\",\"daemon_config_name\":\"manual_install\",\"version\":\"1.0.0\",\"secret\":\"12345\",\"host\":\"host.docker.internal\",\"port\":10050,\"scopes\":{\"required\":[\"FILES\", \"NOTIFICATIONS\"],\"optional\":[]},\"protocol\":\"http\",\"system_app\":0}" \
-  --force-scopes --wait-finish
+	docker exec master-nextcloud-1 sudo -u www-data php occ app_api:app:register upscaler_example docker_dev \
+		--force-scopes \
+		--info-xml https://raw.githubusercontent.com/cloud-py-api/upscaler_example/main/appinfo/info.xml
 
 .PHONY: register27
 register27:
 	docker exec master-stable27-1 sudo -u www-data php occ app_api:app:unregister upscaler_example --silent || true
 	docker exec master-stable27-1 sudo -u www-data php occ app_api:app:register upscaler_example manual_install --json-info \
+  "{\"appid\":\"upscaler_example\",\"name\":\"upscaler_example\",\"daemon_config_name\":\"manual_install\",\"version\":\"1.0.0\",\"secret\":\"12345\",\"host\":\"host.docker.internal\",\"port\":10050,\"scopes\":{\"required\":[\"FILES\", \"NOTIFICATIONS\"],\"optional\":[]},\"protocol\":\"http\",\"system_app\":0}" \
+  --force-scopes --wait-finish
+
+.PHONY: register28
+register28:
+	docker exec master-stable28-1 sudo -u www-data php occ app_api:app:unregister upscaler_example --silent || true
+	docker exec master-stable28-1 sudo -u www-data php occ app_api:app:register upscaler_example manual_install --json-info \
+  "{\"appid\":\"upscaler_example\",\"name\":\"upscaler_example\",\"daemon_config_name\":\"manual_install\",\"version\":\"1.0.0\",\"secret\":\"12345\",\"host\":\"host.docker.internal\",\"port\":10050,\"scopes\":{\"required\":[\"FILES\", \"NOTIFICATIONS\"],\"optional\":[]},\"protocol\":\"http\",\"system_app\":0}" \
+  --force-scopes --wait-finish
+
+.PHONY: register
+register:
+	docker exec master-nextcloud-1 sudo -u www-data php occ app_api:app:unregister upscaler_example --silent || true
+	docker exec master-nextcloud-1 sudo -u www-data php occ app_api:app:register upscaler_example manual_install --json-info \
   "{\"appid\":\"upscaler_example\",\"name\":\"upscaler_example\",\"daemon_config_name\":\"manual_install\",\"version\":\"1.0.0\",\"secret\":\"12345\",\"host\":\"host.docker.internal\",\"port\":10050,\"scopes\":{\"required\":[\"FILES\", \"NOTIFICATIONS\"],\"optional\":[]},\"protocol\":\"http\",\"system_app\":0}" \
   --force-scopes --wait-finish

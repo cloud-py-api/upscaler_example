@@ -4,6 +4,7 @@
     <option name="INTERPRETER_OPTIONS" value="" />
     <option name="PARENT_ENVS" value="true" />
     <envs>
+      <env name="APP_HOST" value="0.0.0.0" />
       <env name="APP_ID" value="upscaler_example" />
       <env name="APP_PORT" value="10050" />
       <env name="APP_SECRET" value="12345" />
@@ -13,12 +14,12 @@
     </envs>
     <option name="SDK_HOME" value="$PROJECT_DIR$/venv/bin/python" />
     <option name="SDK_NAME" value="Python 3.10 (upscaler_example)" />
-    <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src" />
+    <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/lib" />
     <option name="IS_MODULE_SDK" value="false" />
     <option name="ADD_CONTENT_ROOTS" value="true" />
     <option name="ADD_SOURCE_ROOTS" value="true" />
     <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-    <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/main.py" />
+    <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lib/main.py" />
     <option name="PARAMETERS" value="" />
     <option name="SHOW_COMMAND_LINE" value="false" />
     <option name="EMULATE_TERMINAL" value="false" />
