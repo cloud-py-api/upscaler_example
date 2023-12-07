@@ -168,7 +168,7 @@ async def gfpgan_upscale(
         user_id = sign_check(request)
     except ValueError:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED)
-    background_tasks.add_task(gfpgan_background, file.actionFile, user_id)
+    background_tasks.add_task(gfpgan_background, file, user_id)
     return Response()
 
 
