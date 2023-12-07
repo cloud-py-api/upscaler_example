@@ -30,7 +30,7 @@ Refer to [How to install](https://github.com/cloud-py-api/upscaler_example/blob/
 		<docker-install>
 			<registry>ghcr.io</registry>
 			<image>cloud-py-api/upscaler_example</image>
-			<image-tag>1.2.0</image-tag>
+			<image-tag>1.3.0</image-tag>
 		</docker-install>
 		<scopes>
 			<required>
